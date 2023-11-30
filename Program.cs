@@ -10,26 +10,40 @@
 
 void PrintArray(string[] arr)
 {
-
+    Console.Write("[");
     for (int i = 0; i < arr.Length; i++)
     {
-        if (i < arr.Length - 1) Console.Write($"{arr[i]}, ");
-        else Console.Write($"{arr[i]} ");
+        if (i < arr.Length - 1) Console.Write($"\"{arr[i]}\", ");
+        else Console.Write($"{arr[i]} \"");
+
     }
-
+    Console.Write("]");
 }
-
 string[] SortArray(string[] arr)
 {
+    int count = 0;
     for (int i = 0; i < arr.Length; i++)
     {
-        if (arr[i].Length <= 3) Console.Write($"{arr[i]}, ");
-
+        if (arr[i].Length <= 3)
+        {
+            count++;
+        }
+        
     }
-    return arr;
+    string[] str = new string[count];
+    int j = 0;
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (arr[i].Length <= 3)
+        {
+            str[j] = arr[i];
+            j++;
+        }
+    }
+    return str;
 }
-
-string[] array = {"Hello", "2", "123"};
+string[] array = { "Hello", "2", "123" };
 PrintArray(array);
-Console.WriteLine($"  ");
-SortArray(array);
+Console.Write(" -> ");
+string[] sortArray = SortArray(array);
+PrintArray(sortArray);
